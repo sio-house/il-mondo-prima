@@ -36,6 +36,8 @@
     background: linear-gradient(rgba(13,13,13,0.85), rgba(13,13,13,0));
     pointer-events: none;
   }
+  .mark { vertical-align: -4px; }
+  #splash .mark, #welcome .mark { display: block; margin: 0 auto; }
   header h1 {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 21px; font-weight: 600; letter-spacing: 1.2px;
@@ -325,7 +327,7 @@
 <div id="vignette"></div>
 
 <div id="splash">
-  <div class="wave">🌊</div>
+  <div class="wave"><svg class="mark" viewBox="0 0 40 40" width="46" height="46" aria-hidden="true"><g fill="none" stroke="#e0c26a" stroke-width="2.4" stroke-linecap="round"><path d="M4 24 Q10 16 16 21 T28 20 T37 16"/><path d="M7 30 Q13 24 19 28 T31 27"/></g><circle cx="32" cy="9" r="3.2" fill="#e0c26a" opacity="0.85"/></svg></div>
   <h2>Il Mondo Prima</h2>
   <p>Sto ricostruendo 24.000 anni di coste…</p>
 </div>
@@ -333,14 +335,14 @@
 <div id="welcome">
   <img id="wBg" alt="">
   <div id="wCol">
-    <div class="wave" style="font-size:34px">🌊</div>
+    <div class="wave"><svg class="mark" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><g fill="none" stroke="#e0c26a" stroke-width="2.4" stroke-linecap="round"><path d="M4 24 Q10 16 16 21 T28 20 T37 16"/><path d="M7 30 Q13 24 19 28 T31 27"/></g><circle cx="32" cy="9" r="3.2" fill="#e0c26a" opacity="0.85"/></svg></div>
     <h2>Il Mondo Prima</h2>
     <p class="wTag">Ventiquattromila anni di mari che salgono, terre perdute e civiltà — su una sola mappa. Trascina il tempo, tocca i luoghi, sovrapponi le mappe antiche.</p>
     <div id="wGrid">
-      <button class="wCard" onclick="welcomeGo('tour')"><b>▶ Il tour cronologico</b><span>169 tappe, dal grande gelo a oggi, con la voce narrante</span></button>
-      <button class="wCard" onclick="welcomeGo('theme','atlantide')"><b>🔱 Dov'è Atlantide?</b><span>le nove candidate a confronto, dal Mediterraneo all'Antartide</span></button>
-      <button class="wCard" onclick="welcomeGo('theme','diluvio')"><b>🌊 I miti del diluvio</b><span>lo stesso racconto in dodici civiltà — e il mare che salì davvero</span></button>
-      <button class="wCard" onclick="welcomeGo('esplora')"><b>🗺 Esplora libero</b><span>210 luoghi, 19 percorsi, 14 rotte — cerca e vagabonda</span></button>
+      <button class="wCard" onclick="welcomeGo('tour')"><b>► Il tour cronologico</b><span>169 tappe, dal grande gelo a oggi, con la voce narrante</span></button>
+      <button class="wCard" onclick="welcomeGo('theme','atlantide')"><b>❖ Dov'è Atlantide?</b><span>le nove candidate a confronto, dal Mediterraneo all'Antartide</span></button>
+      <button class="wCard" onclick="welcomeGo('theme','diluvio')"><b>∿ I miti del diluvio</b><span>lo stesso racconto in dodici civiltà — e il mare che salì davvero</span></button>
+      <button class="wCard" onclick="welcomeGo('esplora')"><b>◈ Esplora libero</b><span>210 luoghi, 19 percorsi, 14 rotte — cerca e vagabonda</span></button>
     </div>
     <div class="wLabel">Le mappe antiche da sovrapporre</div>
     <div id="wMaps"></div>
@@ -349,7 +351,7 @@
   </div>
 </div>
 <header>
-  <h1>🌊 Il Mondo Prima</h1>
+  <h1><svg class="mark" viewBox="0 0 40 40" width="22" height="22" aria-hidden="true"><g fill="none" stroke="#e0c26a" stroke-width="2.4" stroke-linecap="round"><path d="M4 24 Q10 16 16 21 T28 20 T37 16"/><path d="M7 30 Q13 24 19 28 T31 27"/></g><circle cx="32" cy="9" r="3.2" fill="#e0c26a" opacity="0.85"/></svg> Il Mondo Prima</h1>
   <p>Atlante interattivo del tempo profondo — mari, terre perdute e civiltà (dati NOAA ETOPO)</p>
 </header>
 
@@ -368,12 +370,12 @@
 </div>
 
 <div id="tip"></div>
-<div id="hint">👆 Tocca i punti per aprire le schede · ☰ per siti, temi e tour · pizzica per lo zoom</div>
+<div id="hint">Tocca i punti per aprire le schede · ☰ per siti, temi e tour · pizzica per lo zoom</div>
 <div id="toast"></div>
 
 <div id="card">
   <button class="close" onclick="closeCard()">✕</button>
-  <button id="cardSpeak" class="close" title="Leggi ad alta voce" onclick="speakCard()">🔊</button>
+  <button id="cardSpeak" class="close" title="Leggi ad alta voce" onclick="speakCard()">♪</button>
   <h3 id="cardTitle"></h3>
   <div id="cardPeriod" class="period"></div>
   <span id="cardTag" class="tag"></span>
@@ -396,7 +398,7 @@
   </div>
   <div id="sky"></div>
   <div class="row" id="timelineRow">
-    <button id="play" class="primary" title="Riproduci">▶</button>
+    <button id="play" class="primary" title="Riproduci">►</button>
     <div id="tstrip">
       <canvas id="tcanvas"></canvas>
       <input type="range" id="timeline" min="0" max="1000" value="1000">
@@ -406,8 +408,8 @@
     <input type="range" id="manual" min="-140" max="70" value="0" step="1">
   </div>
   <div id="modes">
-    <button id="modeTime" class="active">⏳ Timeline storica</button>
-    <button id="modeManual">🎚 Livello manuale</button>
+    <button id="modeTime" class="active">Timeline storica</button>
+    <button id="modeManual">Livello manuale</button>
     <button onclick="preset(-120)">Era glaciale −120 m</button>
     <button onclick="preset(0)">Oggi</button>
     <button onclick="preset(66)">Fusione totale +66 m</button>
@@ -419,23 +421,23 @@
     <button class="f active" data-cat="astro" title="Osservatori e geoglifi">✦</button>
     <button class="f active" data-cat="route" title="Rotte di migrazione">⇢</button>
     <button class="f active" data-cat="area" title="Areali delle civiltà (indicativi)">▦</button>
-    <button class="f" data-astro-lines="1" title="Linee astronomiche: equatore, tropici, allineamenti">☀</button>
-    <button class="f" data-sepia="1" title="Modalità pergamena">📜</button>
+    <button class="f" data-astro-lines="1" title="Linee astronomiche: equatore, tropici, allineamenti">☼</button>
+    <button class="f" data-sepia="1" title="Modalità pergamena">❦</button>
     <span class="fsep"></span>
     <button class="f active" data-grade="doc" title="Documentato" style="color:var(--good)">⬤</button>
     <button class="f active" data-grade="hyp" title="Ipotesi" style="color:var(--warning)">⬤</button>
     <button class="f active" data-grade="spec" title="Speculativo" style="color:var(--critical)">⬤</button>
     <span class="fsep"></span>
-    <button id="btnShare" title="Copia il link a questa vista esatta">🔗 Vista</button>
+    <button id="btnShare" title="Copia il link a questa vista esatta">⧉ Vista</button>
   </div>
 </div>
 
 
 <div id="sidebar">
   <div id="sbTabs">
-    <button data-tab="siti" class="active">🔎 Siti</button>
-    <button data-tab="temi">🧩 Temi</button>
-    <button data-tab="tour">🎬 Tour</button>
+    <button data-tab="siti" class="active">Siti</button>
+    <button data-tab="temi">Temi</button>
+    <button data-tab="tour">Tour</button>
     <button id="sbClose" onclick="closeSidebar()">✕</button>
   </div>
   <div class="sbTab" id="tab-siti">
@@ -450,7 +452,7 @@
   </div>
   <div class="sbTab" id="tab-tour" style="display:none">
     <div class="listHead">
-      <button id="tourToggle" class="primary" style="flex:1">▶ Avvia il tour cronologico</button>
+      <button id="tourToggle" class="primary" style="flex:1">► Avvia il tour cronologico</button>
     </div>
     <div id="tourList" class="sbScroll"></div>
   </div>
@@ -458,10 +460,10 @@
 <button id="sbHandle" title="Siti, temi e tour">☰</button>
 
 <div id="tourbar">
-  <button onclick="tourStep(-1)">⏮</button>
+  <button onclick="tourStep(-1)">«</button>
   <span id="tourInfo">Tour</span>
-  <button onclick="tourStep(1)">⏭</button>
-  <button id="tourVoiceBtn" onclick="toggleTourVoice()" title="Narrazione vocale" style="opacity:0.4">🔊</button>
+  <button onclick="tourStep(1)">»</button>
+  <button id="tourVoiceBtn" onclick="toggleTourVoice()" title="Narrazione vocale" style="opacity:0.4">♪</button>
   <button onclick="stopTour()">✕ esci</button>
 </div>
 
@@ -486,31 +488,31 @@
 //  - globale: 1081×2161 (~1/6°)
 //  - overlay Mediterraneo/Vicino Oriente: 901×2701 (~1/30°), lat 20–50, lon −15–75
 // ============================================================
-const ELEV_PNG = "assets/elev.png";
+const ELEV_PNG = "elev.png";
 
 // Tile ad alta risoluzione (~1/30° ≈ 3,7 km) sovrapposte alla griglia globale.
 // Aggiungerne una = nuova voce qui + placeholder nel builder. Nessun overlap tra tile.
 const TILES = [
   { name: "Mediterraneo–Vicino Oriente", latN: 50, latS: 20, lonW: -15, lonE: 75,
-    W: 2701, H: 901, src: "assets/med.png" },
+    W: 2701, H: 901, src: "med.png" },
   { name: "Asia orientale", latN: 46, latS: -12, lonW: 95, lonE: 147,
-    W: 1561, H: 1741, src: "assets/asia.png" },
+    W: 1561, H: 1741, src: "asia.png" },
   { name: "Americhe centrali e andine", latN: 27, latS: -20, lonW: -110, lonE: -60,
-    W: 1501, H: 1411, src: "assets/amer.png" },
+    W: 1501, H: 1411, src: "amer.png" },
   { name: "Europa nord-occidentale e Islanda", latN: 67, latS: 50, lonW: -26, lonE: 30,
-    W: 1681, H: 511, src: "assets/nweu.png" },
+    W: 1681, H: 511, src: "nweu.png" },
   { name: "Nord America", latN: 52, latS: 27, lonW: -130, lonE: -60,
-    W: 2101, H: 751, src: "assets/nam.png" },
+    W: 2101, H: 751, src: "nam.png" },
   { name: "Australia e Sahul", latN: -12, latS: -45, lonW: 111, lonE: 156,
-    W: 1351, H: 991, src: "assets/aus.png" },
+    W: 1351, H: 991, src: "aus.png" },
   { name: "India e Oceano Indiano", latN: 20, latS: -8, lonW: 65, lonE: 95,
-    W: 901, H: 841, src: "assets/ind.png" },
+    W: 901, H: 841, src: "ind.png" },
   { name: "Africa (~1/20\u00b0)", latN: 20, latS: -36, lonW: -18, lonE: 52,
-    W: 1401, H: 1121, src: "assets/afr.png" },
+    W: 1401, H: 1121, src: "afr.png" },
   { name: "Mediterraneo centrale (1\u2032)", latN: 46, latS: 30, lonW: -6, lonE: 36,
-    W: 2521, H: 961, k: 0.0052, src: "assets/medhi.png" },
+    W: 2521, H: 961, k: 0.0052, src: "medhi.png" },
   { name: "Isole britanniche e Doggerland (1\u2032)", latN: 62, latS: 50, lonW: -11, lonE: 10,
-    W: 1261, H: 721, k: 0.0052, src: "assets/ukhi.png" },
+    W: 1261, H: 721, k: 0.0052, src: "ukhi.png" },
 ];
 for (const t of TILES) {
   t.elev = null; t.ready = false; t.seaRendered = null;
@@ -1393,9 +1395,9 @@ const ROUTES = [
 const MOBILE = matchMedia("(max-width: 700px), (pointer: coarse) and (max-width: 1100px)").matches;
 const FS = MOBILE ? 1.3 : 1;
 const GRADES = {
-  doc:  { color: "#0ca30c", label: "🟢 Documentato" },
-  hyp:  { color: "#fab219", label: "🟡 Ipotesi / tradizione" },
-  spec: { color: "#d03b3b", label: "🔴 Speculativo" },
+  doc:  { color: "#0ca30c", label: "● Documentato" },
+  hyp:  { color: "#fab219", label: "● Ipotesi / tradizione" },
+  spec: { color: "#d03b3b", label: "● Speculativo" },
 };
 const FADE_Y = 250;   // dissolvenza dei ◆ in anni
 
@@ -1776,20 +1778,20 @@ function drawGeoLabels() {
 
 // ------- mappe antiche sovrapponibili (georeferenziazione indicativa) -------
 const OVERLAYS = {
-  piri:     { name: "Piri Reis (1513)",    src: "assets/piri.jpg",   lonW: -72,  lonE: -8,  latN: 52,   latS: -58 },
-  marina:   { name: "Carta Marina (1539)", src: "assets/marina.jpg", lonW: -13,  lonE: 42,  latN: 71.5, latS: 54 },
-  ortelius: { name: "Ortelius (1572)",     src: "assets/ortelius.jpg",    lonW: -180, lonE: 180, latN: 85,   latS: -75 },
-  zeno:     { name: "Mappa Zeno (1558)",   src: "assets/zeno.jpg",   lonW: -52,  lonE: 12,  latN: 71,   latS: 52 },
-  buache:   { name: "Buache (1739)",       src: "assets/buache.jpg", lonW: -110, lonE: 70,  latN: -25,  latS: -90 },
-  mercator: { name: "Mercatore \u2014 il Polo (1595)", src: "assets/mercator.jpg", lonW: -75,  lonE: 45,  latN: 90,   latS: 50 },
-  framauro: { name: "Fra Mauro (1450, raddrizzata)",  src: "assets/framauro.jpg", lonW: -25,  lonE: 145, latN: 75,   latS: -40 },
-  kangnido: { name: "Kangnido (1402)",                src: "assets/kangnido.jpg", lonW: -5,   lonE: 145, latN: 55,   latS: -35 },
-  waldseem: { name: "Waldseem\u00fcller (1507)",         src: "assets/waldseem.jpg", lonW: -110, lonE: 165, latN: 70,   latS: -55 },
-  idrisi:   { name: "Tabula Rogeriana (1154, raddrizzata)", src: "assets/idrisi.jpg",  lonW: -12,  lonE: 115, latN: 60, latS: -5 },
-  cantino:  { name: "Planisfero Cantino (1502)",            src: "assets/cantino.jpg", lonW: -100, lonE: 95,  latN: 68, latS: -45 },
-  hereford: { name: "Mappa di Hereford (~1300, ruotata)",   src: "assets/hereford.jpg",   lonW: -12,  lonE: 75,  latN: 62, latS: -10 },
-  ricci:    { name: "Mappamondo di Ricci (1602)",           src: "assets/ricci.jpg",   lonW: -35,  lonE: 325, latN: 75, latS: -65 },
-  vallard:  { name: "Atlante Vallard \u2014 Jave la Grande (1547)", src: "assets/vallard.jpg", lonW: 92, lonE: 150, latN: 12, latS: -38 },
+  piri:     { name: "Piri Reis (1513)",    src: "piri.jpg",   lonW: -72,  lonE: -8,  latN: 52,   latS: -58 },
+  marina:   { name: "Carta Marina (1539)", src: "marina.jpg", lonW: -13,  lonE: 42,  latN: 71.5, latS: 54 },
+  ortelius: { name: "Ortelius (1572)",     src: "ortelius.jpg",    lonW: -180, lonE: 180, latN: 85,   latS: -75 },
+  zeno:     { name: "Mappa Zeno (1558)",   src: "zeno.jpg",   lonW: -52,  lonE: 12,  latN: 71,   latS: 52 },
+  buache:   { name: "Buache (1739)",       src: "buache.jpg", lonW: -110, lonE: 70,  latN: -25,  latS: -90 },
+  mercator: { name: "Mercatore \u2014 il Polo (1595)", src: "mercator.jpg", lonW: -75,  lonE: 45,  latN: 90,   latS: 50 },
+  framauro: { name: "Fra Mauro (1450, raddrizzata)",  src: "framauro.jpg", lonW: -25,  lonE: 145, latN: 75,   latS: -40 },
+  kangnido: { name: "Kangnido (1402)",                src: "kangnido.jpg", lonW: -5,   lonE: 145, latN: 55,   latS: -35 },
+  waldseem: { name: "Waldseem\u00fcller (1507)",         src: "waldseem.jpg", lonW: -110, lonE: 165, latN: 70,   latS: -55 },
+  idrisi:   { name: "Tabula Rogeriana (1154, raddrizzata)", src: "idrisi.jpg",  lonW: -12,  lonE: 115, latN: 60, latS: -5 },
+  cantino:  { name: "Planisfero Cantino (1502)",            src: "cantino.jpg", lonW: -100, lonE: 95,  latN: 68, latS: -45 },
+  hereford: { name: "Mappa di Hereford (~1300, ruotata)",   src: "hereford.jpg",   lonW: -12,  lonE: 75,  latN: 62, latS: -10 },
+  ricci:    { name: "Mappamondo di Ricci (1602)",           src: "ricci.jpg",   lonW: -35,  lonE: 325, latN: 75, latS: -65 },
+  vallard:  { name: "Atlante Vallard \u2014 Jave la Grande (1547)", src: "vallard.jpg", lonW: 92, lonE: 150, latN: 12, latS: -38 },
 };
 let activeOverlay = null;
 for (const o of Object.values(OVERLAYS)) {
@@ -2150,8 +2152,8 @@ mapC.addEventListener("pointermove", e => {
       if (mx < 0 || mx >= W || my < 0 || my >= H) return;
       v = elev[my * W + mx];
     }
-    const state = v <= curSea ? (v > 0 ? "🔴 oggi terraferma, qui sommersa" : "sott'acqua")
-                 : (v <= 0 ? "🏝 emersa all'epoca (oggi sommersa)" : "terraferma");
+    const state = v <= curSea ? (v > 0 ? "oggi terraferma, qui sommersa" : "sott'acqua")
+                 : (v <= 0 ? "emersa all'epoca (oggi sommersa)" : "terraferma");
     tip.innerHTML = `<b>${v >= 0 ? "+" : ""}${v} m</b> s.l.m. odierno · ${state}<br>` +
                     `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? "N" : "S"} ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? "E" : "O"}`;
     tip.style.left = e.clientX + "px"; tip.style.top = e.clientY + "px";
@@ -2204,8 +2206,8 @@ function openCard(p) {
   }
   // video dei canali: curati se presenti, altrimenti ricerca YouTube
   if (p.videos) {
-    rows += (rows ? "<br>" : "") + "📺 " + p.videos.map(([l, id]) =>
-      `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">${l}</a>`).join("<br>📺 ");
+    rows += (rows ? "<br>" : "") + "▸ " + p.videos.map(([l, id]) =>
+      `<a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">${l}</a>`).join("<br>▸ ");
   } else if (p.lon !== undefined) {
     rows += ` · <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(p.name + " mistero storia")}" target="_blank" rel="noopener">YouTube</a>`;
   }
@@ -2243,7 +2245,7 @@ function openCard(p) {
   const targetY = p.gotoY !== undefined ? p.gotoY : (p.from !== undefined ? p.from : null);
   if (targetY !== null) {
     gotoBtn.style.display = "inline-block";
-    gotoBtn.textContent = `⏳ Vai al ${yearLabel(targetY)}`;
+    gotoBtn.textContent = `→ Vai al ${yearLabel(targetY)}`;
     gotoBtn.onclick = () => gotoYear(targetY);
   } else gotoBtn.style.display = "none";
   document.getElementById("card").style.display = "block";
@@ -2348,10 +2350,10 @@ document.getElementById("modeTime").onclick = () => setMode("time");
 document.getElementById("modeManual").onclick = () => setMode("manual");
 function preset(v) { manual.value = v; setMode("manual"); }
 
-function stopPlay() { playing = false; playBtn.textContent = "▶"; }
+function stopPlay() { playing = false; playBtn.textContent = "►"; }
 playBtn.onclick = () => {
   if (playing) { stopPlay(); return; }
-  playing = true; playBtn.textContent = "⏸";
+  playing = true; playBtn.textContent = "❚❚";
   if (+timeline.value > 985) timeline.value = 0;
   const step = () => {
     if (!playing) return;
@@ -2524,7 +2526,7 @@ function buildTour() {
 }
 function updateTourToggle() {
   document.getElementById("tourToggle").textContent =
-    tourTimer ? "⏸ Ferma l'avanzamento automatico" : "▶ Avvia il tour cronologico";
+    tourTimer ? "❚❚ Ferma l'avanzamento automatico" : "► Avvia il tour cronologico";
 }
 document.getElementById("tourToggle").onclick = () => {
   if (tourTimer) { stopTour(); }
@@ -2633,7 +2635,7 @@ function currentState() {
 document.getElementById("btnShare").onclick = () => {
   const url = location.href.split("#")[0] + "#" + currentState();
   history.replaceState(null, "", "#" + currentState());
-  const ok = () => toast("🔗 Link alla vista copiato");
+  const ok = () => toast("Link alla vista copiato");
   if (navigator.clipboard && navigator.clipboard.writeText)
     navigator.clipboard.writeText(url).then(ok, () => window.prompt("Copia il link:", url));
   else window.prompt("Copia il link:", url);
