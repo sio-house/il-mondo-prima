@@ -339,10 +339,10 @@
     <h2>Il Mondo Prima</h2>
     <p class="wTag">Ventiquattromila anni di mari che salgono, terre perdute e civiltà — su una sola mappa. Trascina il tempo, tocca i luoghi, sovrapponi le mappe antiche.</p>
     <div id="wGrid">
-      <button class="wCard" onclick="welcomeGo('tour')"><b>► Il tour cronologico</b><span>169 tappe, dal grande gelo a oggi, con la voce narrante</span></button>
-      <button class="wCard" onclick="welcomeGo('theme','atlantide')"><b>❖ Dov'è Atlantide?</b><span>le nove candidate a confronto, dal Mediterraneo all'Antartide</span></button>
-      <button class="wCard" onclick="welcomeGo('theme','diluvio')"><b>∿ I miti del diluvio</b><span>lo stesso racconto in dodici civiltà — e il mare che salì davvero</span></button>
-      <button class="wCard" onclick="welcomeGo('esplora')"><b>◈ Esplora libero</b><span>210 luoghi, 19 percorsi, 14 rotte — cerca e vagabonda</span></button>
+      <button class="wCard" onclick="welcomeGo('tour')"><b>Il tour cronologico</b><span>169 tappe, dal grande gelo a oggi, con la voce narrante</span></button>
+      <button class="wCard" onclick="welcomeGo('theme','atlantide')"><b>Dov'è Atlantide?</b><span>le nove candidate a confronto, dal Mediterraneo all'Antartide</span></button>
+      <button class="wCard" onclick="welcomeGo('theme','diluvio')"><b>I miti del diluvio</b><span>lo stesso racconto in dodici civiltà — e il mare che salì davvero</span></button>
+      <button class="wCard" onclick="welcomeGo('esplora')"><b>Esplora libero</b><span>210 luoghi, 19 percorsi, 14 rotte — cerca e vagabonda</span></button>
     </div>
     <div class="wLabel">Le mappe antiche da sovrapporre</div>
     <div id="wMaps"></div>
@@ -370,12 +370,12 @@
 </div>
 
 <div id="tip"></div>
-<div id="hint">Tocca i punti per aprire le schede · ☰ per siti, temi e tour · pizzica per lo zoom</div>
+<div id="hint">Tocca i punti per aprire le schede · il menu in alto a sinistra per siti, temi e tour · pizzica per lo zoom</div>
 <div id="toast"></div>
 
 <div id="card">
   <button class="close" onclick="closeCard()">✕</button>
-  <button id="cardSpeak" class="close" title="Leggi ad alta voce" onclick="speakCard()">♪</button>
+  <button id="cardSpeak" class="close" title="Leggi ad alta voce" onclick="speakCard()"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="vertical-align:-3px"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></g></svg></button>
   <h3 id="cardTitle"></h3>
   <div id="cardPeriod" class="period"></div>
   <span id="cardTag" class="tag"></span>
@@ -421,14 +421,14 @@
     <button class="f active" data-cat="astro" title="Osservatori e geoglifi">✦</button>
     <button class="f active" data-cat="route" title="Rotte di migrazione">⇢</button>
     <button class="f active" data-cat="area" title="Areali delle civiltà (indicativi)">▦</button>
-    <button class="f" data-astro-lines="1" title="Linee astronomiche: equatore, tropici, allineamenti">☼</button>
-    <button class="f" data-sepia="1" title="Modalità pergamena">❦</button>
+    <button class="f" data-astro-lines="1" title="Linee astronomiche: equatore, tropici, allineamenti"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="vertical-align:-2px"><g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/></g></svg></button>
+    <button class="f" data-sepia="1" title="Modalità pergamena">seppia</button>
     <span class="fsep"></span>
     <button class="f active" data-grade="doc" title="Documentato" style="color:var(--good)">⬤</button>
     <button class="f active" data-grade="hyp" title="Ipotesi" style="color:var(--warning)">⬤</button>
     <button class="f active" data-grade="spec" title="Speculativo" style="color:var(--critical)">⬤</button>
     <span class="fsep"></span>
-    <button id="btnShare" title="Copia il link a questa vista esatta">⧉ Vista</button>
+    <button id="btnShare" title="Copia il link a questa vista esatta">Vista</button>
   </div>
 </div>
 
@@ -457,13 +457,13 @@
     <div id="tourList" class="sbScroll"></div>
   </div>
 </div>
-<button id="sbHandle" title="Siti, temi e tour">☰</button>
+<button id="sbHandle" title="Siti, temi e tour"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" style="vertical-align:-3px"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></g></svg></button>
 
 <div id="tourbar">
   <button onclick="tourStep(-1)">«</button>
   <span id="tourInfo">Tour</span>
   <button onclick="tourStep(1)">»</button>
-  <button id="tourVoiceBtn" onclick="toggleTourVoice()" title="Narrazione vocale" style="opacity:0.4">♪</button>
+  <button id="tourVoiceBtn" onclick="toggleTourVoice()" title="Narrazione vocale" style="opacity:0.4"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="vertical-align:-3px"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></g></svg></button>
   <button onclick="stopTour()">✕ esci</button>
 </div>
 
@@ -1349,7 +1349,7 @@ const THEMES = [
       { lon: 22.50, lat: 38.48, name: "Delfi", grade: "doc", body: "L'ombelico del mondo: qui Apollo uccise il serpente Pitone e ne prese l'oracolo, e per mille anni la Pizia, seduta sul tripode sopra una fenditura della roccia, rispose alle domande di re e città in versi ambigui che fecero e disfecero imperi — chiedete a Creso. La geologia moderna ha dato corpo alla leggenda: sotto il tempio si incrociano due faglie, e dalle fratture salivano davvero gas (etilene?) capaci di alterare la coscienza. Sul tempio, le due parole più famose dell'antichità: conosci te stesso. L'ultimo oracolo, riportato per l'imperatore Giuliano, è l'epitaffio del paganesimo: «Dite al re: la bella dimora è caduta, Apollo non ha più capanna, né alloro profetico, né fonte che parla. Anche l'acqua che parlava si è spenta»." },
       { lon: 20.79, lat: 39.55, name: "Dodona", grade: "doc", body: "Il più antico oracolo greco non parlava per bocca umana: parlava con le fronde. A Dodona, nell'Epiro, i sacerdoti Selli — «che dormono a terra e non si lavano i piedi», dice Omero — interpretavano lo stormire delle querce sacre di Zeus e il suono dei calderoni di bronzo mossi dal vento. È la religione allo stato di natura: prima dei templi, un albero che parla. Ai pellegrini era chiesto di incidere la domanda su laminette di piombo, e migliaia ne sono state ritrovate: accanto ai quesiti di Stato, le domande di sempre — «Mia moglie mi tradisce?», «Il figlio che aspetta è mio?», «Devo comprare la casa?». Nessun sito antico restituisce con altrettanta tenerezza la voce della gente comune davanti all'ignoto." },
       { lon: 14.04, lat: 40.85, name: "L'antro della Sibilla", grade: "doc", body: "A Cuma, la prima colonia greca d'Occidente, un corridoio trapezoidale di 130 metri scavato nel tufo porta alla camera dove — vuole la tradizione — profetava la Sibilla, la veggente che scrisse i libri del destino di Roma e che a Enea aprì la porta degli inferi: il lago d'Averno è a due passi. Virgilio ambientò qui il sesto libro dell'Eneide, e chi percorre oggi la galleria tagliata dalla luce obliqua capisce perché: è un'architettura che ipnotizza prima ancora di significare. Gli archeologi discutono se l'antro fosse davvero oracolare o una galleria militare — la scheda lo dice — ma i libri sibillini esistettero eccome: Roma li custodì sul Campidoglio e li consultò per otto secoli nei momenti di terrore, finché Stilicone non li bruciò. Anche le profezie, alla fine, hanno una fine." },
-      { lon: 12.48, lat: 41.89, name: "I misteri di Mitra", grade: "doc", body: "L'ultimo grande rivale del cristianesimo: un dio che uccide il toro cosmico in una grotta, un culto per soli uomini a sette gradi di iniziazione — dal Corvo al Padre — celebrato in centinaia di mitrei sotterranei da Londra all'Eufrate, molti dei quali si visitano ancora sotto le chiese di Roma, San Clemente su tutti. Del mito non ci resta quasi nessun testo: solo le immagini, sempre identiche, del dio col berretto frigio che volta lo sguardo mentre colpisce — un fumetto teologico di cui abbiamo perso i dialoghi. L'ipotesi astronomica moderna vi legge una mappa del cielo: il toro è il Toro, e l'uccisione celebrerebbe la precessione degli equinozi scoperta da Ipparco. Se è così, i misteri di Mitra erano un planetario iniziatico — e questo atlante, col suo bottone ☀, ne è un lontanissimo parente." },
+      { lon: 12.48, lat: 41.89, name: "I misteri di Mitra", grade: "doc", body: "L'ultimo grande rivale del cristianesimo: un dio che uccide il toro cosmico in una grotta, un culto per soli uomini a sette gradi di iniziazione — dal Corvo al Padre — celebrato in centinaia di mitrei sotterranei da Londra all'Eufrate, molti dei quali si visitano ancora sotto le chiese di Roma, San Clemente su tutti. Del mito non ci resta quasi nessun testo: solo le immagini, sempre identiche, del dio col berretto frigio che volta lo sguardo mentre colpisce — un fumetto teologico di cui abbiamo perso i dialoghi. L'ipotesi astronomica moderna vi legge una mappa del cielo: il toro è il Toro, e l'uccisione celebrerebbe la precessione degli equinozi scoperta da Ipparco. Se è così, i misteri di Mitra erano un planetario iniziatico — e questo atlante, col suo bottone delle linee astronomiche, ne è un lontanissimo parente." },
     ] },
 ];
 
