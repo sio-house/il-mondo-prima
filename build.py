@@ -7,6 +7,7 @@ ASSETS = [
     ('__AUSDATA__','aus.png','image/png'), ('__INDDATA__','ind.png','image/png'),
     ('__AFRDATA__','afr.png','image/png'), ('__MEDHIDATA__','medhi.png','image/png'),
     ('__UKHIDATA__','ukhi.png','image/png'),
+    ('__ETRUDATA__','etru.png','image/png'),
     ('__PIRIDATA__','piri.jpg','image/jpeg'), ('__MARINADATA__','marina.jpg','image/jpeg'),
     ('__ORTDATA__','ortelius.jpg','image/jpeg'), ('__ZENODATA__','zeno.jpg','image/jpeg'),
     ('__BUACHEDATA__','buache.jpg','image/jpeg'), ('__MERCDATA__','mercator.jpg','image/jpeg'),
