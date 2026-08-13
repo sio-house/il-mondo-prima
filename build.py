@@ -6,8 +6,9 @@ ASSETS = [
     ('__NWEUDATA__','nweu.png','image/png'), ('__NAMDATA__','nam.png','image/png'),
     ('__AUSDATA__','aus.png','image/png'), ('__INDDATA__','ind.png','image/png'),
     ('__AFRDATA__','afr.png','image/png'), ('__MEDHIDATA__','medhi.png','image/png'),
-    ('__UKHIDATA__','ukhi.png','image/png'),
-    ('__ETRUDATA__','etru.png','image/png'),
+    ('__UKHIDATA__','ukhi.png','image/png'), ('__ETRUDATA__','etru.png','image/png'),
+    ('__EGEODATA__','egeo.png','image/png'), ('__GIAPPDATA__','giapp.png','image/png'),
+    ('__ETIOPDATA__','etiop.png','image/png'), ('__SAFRDATA__','safr.png','image/png'),
     ('__PIRIDATA__','piri.jpg','image/jpeg'), ('__MARINADATA__','marina.jpg','image/jpeg'),
     ('__ORTDATA__','ortelius.jpg','image/jpeg'), ('__ZENODATA__','zeno.jpg','image/jpeg'),
     ('__BUACHEDATA__','buache.jpg','image/jpeg'), ('__MERCDATA__','mercator.jpg','image/jpeg'),
@@ -23,7 +24,7 @@ if '--sito' in sys.argv:
     for ph, f, _ in ASSETS:
         assert ph in html, ph
         html = html.replace(ph, 'assets/' + f); shutil.copy(f, 'sito/assets/' + f)
-    open('sito/index.html', 'w', encoding='utf-8').write(html); print('sito/ pronto')
+    open('sito/index.html', 'w', encoding='utf-8').write(html); print('sito/ pronto:', len(ASSETS), 'asset')
 else:
     for ph, f, m in ASSETS:
         assert ph in html, ph
