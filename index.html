@@ -175,6 +175,43 @@
   .sbTab { display: flex; flex-direction: column; min-height: 0; flex: 1; }
   .sbScroll { overflow-y: auto; flex: 1; }
   .sbNote { font-size: 11.5px; color: var(--muted); padding: 10px 12px 6px; line-height: 1.4; }
+  /* ------- catalogo a schermo intero (sostituisce la barra laterale) ------- */
+  #sidebar { display: none !important; }
+  #catalogo { position: absolute; inset: 0; z-index: 14; display: none; overflow-y: auto;
+    background: rgba(13,13,13,0.96);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  #catCol { max-width: 880px; margin: 0 auto; padding: 14px 16px 48px; }
+  #catTop { display: flex; gap: 10px; position: sticky; top: 0; padding: 10px 0 12px; z-index: 2;
+    background: linear-gradient(rgba(13,13,13,0.97) 78%, transparent); }
+  #catSearch { flex: 1; font-size: 16px; padding: 12px 16px; border-radius: 12px;
+    background: var(--surface); border: 1px solid var(--hairline); color: var(--ink); font-family: inherit; }
+  #catSearch:focus { outline: none; border-color: var(--accent); }
+  #catTop .close { flex: 0 0 48px; border: 1px solid var(--hairline); border-radius: 12px;
+    font-size: 18px; background: var(--surface); color: var(--ink-2); }
+  .catH { font-family: Georgia, serif; font-style: italic; color: #e0c26a; font-size: 15px;
+    letter-spacing: 1px; margin: 22px 2px 10px; }
+  #catThemes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 8px; }
+  .catTheme { text-align: left; padding: 11px 13px; border-radius: 12px;
+    background: rgba(255,255,255,0.045); border: 1px solid var(--hairline);
+    border-left: 4px solid var(--accent); cursor: pointer;
+    display: flex; flex-direction: column; gap: 3px; font-family: inherit; }
+  .catTheme:hover { border-color: #e0c26a; background: rgba(224,194,106,0.06); }
+  .catTheme b { font-size: 13.5px; color: var(--ink); font-weight: 600; white-space: normal; }
+  .catTheme span { font-size: 11px; color: var(--muted); }
+  #catTour button { font-size: 14px; padding: 12px 20px; border-radius: 12px; }
+  #catPlaces { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2px 12px; }
+  .catPlace { display: flex; gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: 8px;
+    cursor: pointer; font-size: 12.5px; color: var(--ink-2); background: none; border: none;
+    text-align: left; font-family: inherit; white-space: nowrap; overflow: hidden; }
+  .catPlace:hover { background: rgba(57,135,229,0.12); color: var(--ink); }
+  .catPlace .sym { width: 14px; flex: none; text-align: center; }
+  .catPlace .nm { overflow: hidden; text-overflow: ellipsis; }
+  .catPlace .per { margin-left: auto; color: var(--muted); font-size: 10px; padding-left: 6px; }
+  @media (max-width: 700px) {
+    .catTheme b { font-size: 15px; }
+    .catPlace { font-size: 14.5px; padding: 9px 8px; }
+    .catH { font-size: 16px; }
+  }
   #sbHandle {
     position: absolute; top: 64px; left: 10px; z-index: 8;
     width: 40px; height: 40px; border-radius: 12px; font-size: 16px;
@@ -454,6 +491,23 @@
     <div id="tourList" class="sbScroll"></div>
   </div>
 </div>
+<div id="catalogo">
+  <div id="catCol">
+    <div id="catTop">
+      <input id="catSearch" placeholder="Cerca luoghi e percorsi…" autocomplete="off">
+      <button class="close" onclick="closeCatalog()">✕</button>
+    </div>
+    <div class="catH">Percorsi guidati</div>
+    <div id="catThemes"></div>
+    <div class="catH">Tour cronologico</div>
+    <div id="catTour">
+      <button id="catTourBtn" class="primary">► Avvia il tour — 169 tappe dal grande gelo a oggi</button>
+    </div>
+    <div class="catH">Tutti i luoghi <span id="catCount"></span></div>
+    <div id="catPlaces"></div>
+  </div>
+</div>
+
 <button id="sbHandle" title="Siti, temi e tour"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" style="vertical-align:-3px"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></g></svg></button>
 
 <div id="tourbar">
@@ -2613,16 +2667,61 @@ function buildList(q) {
 // ------------------------------------------------------------
 // SIDEBAR SINISTRA — schede Siti / Temi / Tour
 // ------------------------------------------------------------
-function openSidebar(tab) {
-  document.body.classList.add("sb");
-  document.querySelectorAll("#sbTabs button[data-tab]").forEach(b =>
-    b.classList.toggle("active", b.dataset.tab === tab));
-  document.querySelectorAll(".sbTab").forEach(el =>
-    el.style.display = el.id === "tab-" + tab ? "flex" : "none");
-  if (tab === "siti") buildList(document.getElementById("listSearch").value);
-  if (tab === "temi") buildThemes();
-  if (tab === "tour") buildTour();
+function openSidebar(tab) { openCatalog(); }
+// ------- catalogo a schermo intero -------
+let catBuilt = false;
+function catPeriod(p) {
+  return p.from !== undefined ? yearLabel(p.from) : (p.gotoY !== undefined ? yearLabel(p.gotoY) : "");
 }
+function buildCatalog() {
+  const tbox = document.getElementById("catThemes");
+  tbox.innerHTML = "";
+  for (const th of THEMES) {
+    const el = document.createElement("button");
+    el.className = "catTheme";
+    el.style.borderLeftColor = th.color || "#3987e5";
+    const b = document.createElement("b"); b.textContent = th.name;
+    const s = document.createElement("span");
+    s.innerHTML = `${th.nodes ? th.nodes.length + " tappe" : ""} \u00b7 <span style="color:${GRADES[th.grade].color}">\u25cf</span>`;
+    el.append(b, s);
+    el.dataset.q = th.name.toLowerCase();
+    el.onclick = () => { closeCatalog(); setTheme(th); };
+    tbox.appendChild(el);
+  }
+  const pbox = document.getElementById("catPlaces");
+  pbox.innerHTML = "";
+  const all = [...PLACES, ...CIVS].slice().sort((a, b) => a.name.localeCompare(b.name, "it"));
+  for (const p of all) {
+    const el = document.createElement("button");
+    el.className = "catPlace";
+    const sy = document.createElement("span"); sy.className = "sym";
+    sy.style.color = GRADES[p.grade].color; sy.textContent = SYMS[catOf(p)];
+    const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = p.name;
+    const pe = document.createElement("span"); pe.className = "per"; pe.textContent = catPeriod(p);
+    el.append(sy, nm, pe);
+    el.dataset.q = p.name.toLowerCase();
+    el.onclick = () => { closeCatalog(); flyToSite(p); };
+    pbox.appendChild(el);
+  }
+  document.getElementById("catCount").textContent = "\u00b7 " + all.length;
+  catBuilt = true;
+}
+function openCatalog() {
+  if (!catBuilt) buildCatalog();
+  document.getElementById("catalogo").style.display = "block";
+  if (!MOBILE) setTimeout(() => document.getElementById("catSearch").focus(), 50);
+}
+function closeCatalog() { document.getElementById("catalogo").style.display = "none"; }
+document.getElementById("catSearch").addEventListener("input", e => {
+  const q = e.target.value.toLowerCase().trim();
+  for (const el of document.querySelectorAll(".catTheme, .catPlace"))
+    el.style.display = !q || el.dataset.q.includes(q) ? "" : "none";
+});
+document.getElementById("catTourBtn").onclick = () => {
+  closeCatalog();
+  document.getElementById("tourToggle").onclick();
+};
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeCatalog(); });
 function closeSidebar() { document.body.classList.remove("sb"); }
 function closeList() { if (innerWidth < 700) closeSidebar(); }
 function closeThemes() {}
