@@ -1,5 +1,5 @@
-AGGIORNAMENTO v49 — Il Mondo Prima
-Carica su GitHub questi 6 file (Add file -> Upload files):
+AGGIORNAMENTO v50 — Il Mondo Prima
+Carica su GitHub i 6 file (Add file -> Upload files):
   index.html + etru.png egeo.png giapp.png etiop.png safr.png
-Verifica dopo 2 minuti: menu Temi -> devono esserci
-"Simboli in viaggio: la borsa degli dèi" e "L'Etruria sotterranea".
+(le 5 griglie servono solo se non le hai gia' caricate con il v49)
+Verifica: menu Temi -> "Simboli in viaggio: l'androgino" col video di Zampi.
